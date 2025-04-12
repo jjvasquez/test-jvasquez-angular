@@ -1,0 +1,113 @@
+<div class="filter-content p-t-25">
+    <h2 class="filters-title">FILTRO DE BUSQUEDA</h2>
+    <label for="fieldName" class="f-w-700">Filtrar por:</label>
+    <mat-form-field appearance="outline" class="filters-options">
+        <mat-chip-grid #chipGrid aria-label="Filter selection">
+            @for (filter of filters(); track $index) {
+            <mat-chip-row (removed)="remove(filter)">
+                {{filter}}
+                <button matChipRemove [attr.aria-label]="'remove ' + filter">
+                    <mat-icon aria-hidden="false" aria-label="close icon" fontIcon="close"></mat-icon>
+                </button>
+            </mat-chip-row>
+            }
+        </mat-chip-grid>
+        <input name="currentFilter" placeholder="" #filterInput [(ngModel)]="currentFilter"
+            [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" />
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            @for (filter of filteredFilters(); track filter) {
+            <mat-option [value]="filter">{{filter}}</mat-option>
+            }
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <form [formGroup]="filtersForm" (ngSubmit)="filter()">
+        <div class="text-start">
+            <div *ngIf="this.find('Periodo')">
+                <label for="name" class="f-w-700">Periodo</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                    <input matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div *ngIf="this.find('Centro Servicio')">
+                <label for="name" class="f-w-700">Centro Servicio:</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                    <input matInput />
+                </mat-form-field>
+            </div>
+            <div *ngIf="this.find('Actividad')">
+                <label for="name" class="f-w-700">Actividad:</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                    <mat-select>
+                        <mat-option selected value="">Seleccione actividad</mat-option>
+                        <mat-option value="">9 - Toma de letcturas</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="this.find('Tipo Cartera')">
+                <label for="name" class="f-w-700">Tipo cartera:</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                    <mat-select>
+                        <mat-option value="">Comunes</mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="this.find('Estado')">
+                <label for="name" class="f-w-700">Estado:</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                    <mat-select>
+                        <mat-option value="">[Todos]</mat-option>
+                        <mat-option value="">Entregado</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="this.find('Orden De Trabajo')">
+                <label for="fieldName" class="f-w-700">Orden de trabajo:</label>
+
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                    <input matInput required placeholder="" />
+                </mat-form-field>
+            </div>
+            <div *ngIf="this.find('Proveedor')">
+                <label for="fieldName" class="f-w-700">Proveedor:</label>
+
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                    <input matInput required placeholder="" />
+                </mat-form-field>
+            </div>
+
+
+            <div *ngIf="this.find('Fecha de Generación')">
+
+                <label for="name" class="f-w-700">Fecha Generación:</label>
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                    <mat-label>Desde</mat-label>
+                    <input matInput [matDatepicker]="pickerFrom">
+
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFrom></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-100 m-t-5">
+                    <mat-label>Hasta</mat-label>
+                    <input matInput [matDatepicker]="pickerTo">
+
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerTo></mat-datepicker>
+                </mat-form-field>
+
+            </div>
+        </div>
+
+        <div class="grid">
+            <button type="submit" mat-flat-button color="primary" class="b-rad-20 m-t-20">Buscar</button>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,110 @@
+
+.menu-styler {
+  display: block;
+  padding: 0px;
+  border: 2px solid var(--accent-30);
+  border-right: none;
+  position: fixed;
+  overflow: hidden;
+  right: 0;
+  top: 200px;
+  z-index: 1030;
+  transition: all 0.15s ease-in-out;
+  border-radius: 50% 0px 0px 50%;
+  box-shadow: rgba(19, 25, 32, 0.08) 0px 8px 24px;
+  background: #fff;
+
+  ::ng-deep.dark-mode & {
+    border-color: var(--tertiary-50);
+  }
+
+  .pct-c-btn {
+    a {
+      display: block;
+      padding: 16px 12px 16px 20px;
+      transition: all 0.08s cubic-bezier(0.37, 0.24, 0.53, 0.99);
+
+      &:hover {
+        background: #fff;
+      }
+
+      svg {
+        animation: anim-rotate 2.5s infinite linear;
+        color: var(--primary-30);
+      }
+    }
+
+    .pc-icon {
+      width: 22px;
+      height: 22px;
+      vertical-align: middle;
+    }
+  }
+
+  &.open {
+    .style-block {
+      right: 0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+      ::ng-deep.-rtl & {
+        left: 0 !important;
+        right: auto !important;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+.style-block {
+  position: fixed;
+  top: 0;
+  right: -600px;
+  width: 600px;
+  height: 100vh;
+  background: #fff;
+  color: var(--tertiary-900);
+  z-index: 1030;
+  transition: 0.3s ease-in-out;
+  
+  ::ng-deep.dark-mode & {
+    background: #fff !important;
+  }
+
+  .customize-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--tertiary-300);
+
+    .customize-close {
+      &:hover {
+        background: var(--primary-50);
+        color: var(--primary-30);
+      }
+    }
+  }
+
+  .customize-body {
+    padding: 0px 25px;
+
+    .list-group {
+      display: flex;
+      flex-direction: column;
+      border-radius: 0;
+      padding: 0px;
+      margin: 0px;
+
+
+    }
+  }
+}
+
+@keyframes anim-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

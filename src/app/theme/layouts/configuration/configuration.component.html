@@ -1,0 +1,29 @@
+<div id="styleSelector" class="menu-styler" [ngClass]="{ open: styleSelectorToggle }">
+  <div class="pct-c-btn">
+    <a href="javascript:" (click)="styleSelectorToggle = !styleSelectorToggle">
+      <svg class="pc-icon">
+        <use xlink:href="assets/fonts/custom-icon.svg#custom-setting-2"></use>
+      </svg>
+    </a>
+  </div>
+  <div class="style-block">
+    <div class="customize-header align-item-center">
+      <div class="f-16 f-w-600"></div>
+      <button
+        type="button"
+        mat-icon-button
+        class="close-drawer"
+        color="warn"
+        (click)="styleSelectorToggle = !styleSelectorToggle"
+        matTooltip="Close Customizer "
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <ng-scrollbar style="height: calc(100vh - 85px)" visibility="hover">
+      <div class="customize-body">
+       
+      </div>
+    </ng-scrollbar>
+  </div>
+</div>

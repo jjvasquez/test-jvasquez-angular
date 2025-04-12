@@ -1,0 +1,30 @@
+@if (!item.hidden) {
+  <li data-username="" class="nav-item coded-hasmenu" [routerLinkActive]="['active']">
+    
+    
+    <a [routerLinkActive]="['active']"  [target]="item.target ? '_blank' : '_self'" [routerLink]="[item.url]" class="nav-link" >
+      <div class="menu-link-content">
+      @if (item.icon) {
+        <span class="coded-micon">
+          <span class="coded-micon">
+            <img src="../../../../../../assets/images/icons/icon-{{ item.icon }}.png">
+          </span>
+        </span>
+      }
+      <span class="coded-mtext">{{ item.title | translate }}    </span>
+    </div>
+    </a>
+    <ul class="coded-submenu" [routerLinkActive]="['active']" [ngClass]="item.classes!">
+      <li class="sub-menu-title" >NAVEGACION</li>
+      @for (item of item.children; track item.id) {
+        @if (item.type === 'group') {
+          <app-menu-group-vertical [item]="item"></app-menu-group-vertical>
+        } @else if (item.type === 'collapse') {
+          <app-menu-collapse [item]="item"></app-menu-collapse>
+        } @else if (item.type === 'item') {
+          <app-menu-item [item]="item"></app-menu-item>
+        }
+      }
+    </ul>
+  </li>
+}

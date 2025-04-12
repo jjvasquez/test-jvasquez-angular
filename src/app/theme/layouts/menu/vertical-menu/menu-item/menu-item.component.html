@@ -1,0 +1,38 @@
+@if (!item.hidden) {
+  @if (item.url && !item.external) {
+    <li [ngClass]="item.classes!" [routerLinkActive]="['active']">
+      <a class="nav-link" [target]="item.target ? '_blank' : '_self'" [routerLink]="[item.url]" (mouseover)="toggleMenu($event)">
+        <div class="menu-link-content">
+        @if (item.icon) {
+          <span class="coded-micon">
+            <img src="../../../../../../assets/images/icons/icon-{{ item.icon }}.png">
+          </span>
+        }
+        @if (item.icon) {
+          <span class="coded-mtext">{{ item.title | translate }}</span>
+        } @else {
+          {{ item.title | translate }}
+        }
+        </div>
+
+      </a>
+    </li>
+  } @else if (item.url && item.external) {
+    <li [ngClass]="item.classes!">
+      <a [target]="item.target ? '_blank' : '_self'" [href]="item.url">
+        <div class="menu-link-content">
+        @if (item.icon) {
+          <span class="coded-micon">
+            <img src="../../../../../../assets/images/icons/icon-{{ item.icon }}.png">
+          </span>
+        }
+        @if (item.icon) {
+          <span class="coded-mtext">{{ item.title | translate }}</span>
+        } @else {
+          {{ item.title }}
+        }
+        </div>
+      </a>
+    </li>
+  }
+}

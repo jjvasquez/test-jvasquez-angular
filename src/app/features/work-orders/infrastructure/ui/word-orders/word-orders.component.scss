@@ -1,0 +1,39 @@
+tr:nth-child(even) {background-color: #F8F9FA;}
+
+.work-order-content{
+    padding:  20px 25px;
+}
+
+.mat-column-pocentajeAvance{
+    width: 150px !important;
+}
+
+
+
+.example-container {
+    .mat-drawer{
+        top: 0 !important;
+        width: 270px !important;
+    }
+}
+
+.button-toggle-sidebar{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 0;
+    &:hover{
+        background-color: rgb(207, 206, 206);
+        cursor: pointer;
+    }
+}
+
+// .main-sidenav-content {
+//   display: flex;
+//   height: 100%;
+//   align-items: center;
+//   justify-content: center;
+// }

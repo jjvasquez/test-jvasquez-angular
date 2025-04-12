@@ -1,0 +1,38 @@
+<div class="navbar-content">
+  <ul class="nav coded-inner-navbar">
+    @for (item of menus; track item.id) {
+    @if (item.type === 'group') {
+    <app-menu-group-vertical [item]="item"></app-menu-group-vertical>
+    } @else if (item.type === 'collapse') {
+    <app-menu-collapse [item]="item"></app-menu-collapse>
+    } @else if (item.type === 'item') {
+    <app-menu-item [item]="item"></app-menu-item>
+    }
+    }
+  </ul>
+  <ul  class="nav coded-inner-navbar">
+      <li>
+        <a  class="nav-link" >
+          <div  class="menu-link-content">
+            <span class="coded-micon"><img 
+                src="../../../../../assets/images/icons/icon-settings.png"></span><!--container--><span
+               class="coded-mtext">Settings</span><!--container--><!--container--></div>
+        </a>
+      </li>
+      <li>
+        <a  class="nav-link" >
+          <div  class="menu-link-content">
+            <span class="coded-micon"><img 
+                src="../../../../../assets/images/icons/icon-help.png"></span><!--container--><span
+               class="coded-mtext">Ayuda</span><!--container--><!--container--></div>
+        </a>
+      </li>
+      <li>
+        <a  class="nav-link" >
+          <div  class="menu-link-content">
+            <span class="coded-micon"><img 
+                src="../../../../../assets/images/icons/icon-close.png"></span><!--container--><!--container--><!--container--></div>
+        </a>
+      </li>
+ </ul>
+</div>

@@ -1,0 +1,31 @@
+<mat-drawer-container class="drawer-container" [dir]="direction">
+  <mat-drawer #sidebar class="pc-sidebar" [mode]="modeValue" opened [ngClass]="{
+      compact: currentLayout === 'compact',
+      horizontal: currentLayout === 'horizontal'
+    }">
+    <nav>
+      <div class="navbar-wrapper">
+        @if (currentLayout === 'vertical') {
+        <app-vertical-menu [menus]="menus"></app-vertical-menu>
+        }
+        @if (currentLayout === 'compact') {
+        <app-compact-menu [menus]="menus"></app-compact-menu>
+        }
+      </div>
+    </nav>
+  </mat-drawer>
+  <div style="height: 100%;">
+    <app-nav-bar [ngClass]="{
+        'horizontal-navbar': currentLayout === 'horizontal'
+      }"></app-nav-bar>
+    @if (currentLayout === 'horizontal') {
+    <app-horizontal-menu [menus]="menus" [ngClass]="{
+          'horizontal-menu': currentLayout === 'horizontal'
+        }"></app-horizontal-menu>
+    }
+    <div class="app-container">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</mat-drawer-container>

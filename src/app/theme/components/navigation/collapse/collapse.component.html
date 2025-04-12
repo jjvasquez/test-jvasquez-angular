@@ -1,0 +1,14 @@
+<li data-username=" dashboard dashboard" class="nav-item coded-hasmenu" [routerLinkActive]="['active']">
+  <a [routerLinkActive]="['active']" class="nav-link" > </a>
+  <ul class="coded-submenu" [routerLinkActive]="['active']">
+    @for (item of item.children; track item) {
+      @if (item.type === 'group') {
+        <app-component-group [item]="item"></app-component-group>
+      } @else if (item.type === 'collapse') {
+        <app-component-collapse [item]="item"></app-component-collapse>
+      } @else if (item.type === 'item') {
+        <app-component-item [item]="item"></app-component-item>
+      }
+    }
+  </ul>
+</li>
